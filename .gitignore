@@ -11,7 +11,8 @@
 *.so.*
 *.dylib
 
+# Caches 
+config.h
+
 # Executables
-*.exe
-*.out
-*.app
+dwm
