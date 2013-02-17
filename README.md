@@ -7,3 +7,4 @@ dwm official site: http://dwm.suckless.org/
 ### Applied patches
 - exresize
 - systray
+- xft

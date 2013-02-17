@@ -16,3 +16,7 @@ config.h
 
 # Executables
 dwm
+
+
+# Original files 
+# *.orig
