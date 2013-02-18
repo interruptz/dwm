@@ -15,6 +15,7 @@ static const unsigned int systrayspacing = 2;   /* systray spacing */
 static const Bool showsystray       = True;     /* False means no systray */
 static const Bool showbar           = True;     /* False means no bar */
 static const Bool topbar            = True;     /* False means bottom bar */
+static const double defaultopacity  = 1.0;
 
 /* tagging */
 static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
@@ -51,6 +52,7 @@ static const Layout layouts[] = {
 /* commands */
 static const char *dmenucmd[] = { "dmenu_run", "-fn", font, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
 static const char *termcmd[]  = { "lxterminal", NULL };
+static const char *browsercmd[]  = { "chromium", NULL };
 
 #include "exresize.c"
 
@@ -58,6 +60,9 @@ static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
+  { MODKEY|ShiftMask,             XK_s,      spawn,          SHCMD("transset-df -a --dec .1") },
+  { MODKEY|ShiftMask,             XK_d,      spawn,          SHCMD("transset-df -a --inc .1") },
+  { MODKEY|ShiftMask,             XK_f,      spawn,          SHCMD("transset-df -a .75") },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
@@ -116,6 +121,7 @@ static Key keys[] = {
 	{ MODKEY|ControlMask,           XK_KP_9,   togglemaximize,         {.i = -1} },
 	{ MODKEY|ControlMask,           XK_KP_7,   togglemaximize,         {.i = +1} },
 	{ MODKEY|ControlMask,           XK_KP_5,   togglemaximize,         {.i =  0} },
+	{ MODKEY|ControlMask,           XK_Return, spawn,          {.v = browsercmd } },
 };
 
 /* button definitions */
