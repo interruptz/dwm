@@ -6,8 +6,8 @@ static const char font[]            = "-*-fixed-medium-r-*-*-16-*-*-*-*-*-*-*,\
 static const char normbordercolor[] = "#444444";
 static const char normbgcolor[]     = "#222222";
 static const char normfgcolor[]     = "#bbbbbb";
-static const char selbordercolor[]  = "#005577";
-static const char selbgcolor[]      = "#005577";
+static const char selbordercolor[]  = "#007733";
+static const char selbgcolor[]      = "#007733";
 static const char selfgcolor[]      = "#eeeeee";
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
@@ -52,6 +52,7 @@ static const Layout layouts[] = {
 /* commands */
 static const char *dmenucmd[] = { "dmenu_run", "-fn", font, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
 static const char *termcmd[]  = { "lxterminal", NULL };
+static const char *fmcmd[]  = { "thunar", NULL };
 static const char *browsercmd[]  = { "chromium", NULL };
 
 #include "exresize.c"
@@ -62,7 +63,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
   { MODKEY|ShiftMask,             XK_s,      spawn,          SHCMD("transset-df -a --dec .1") },
   { MODKEY|ShiftMask,             XK_d,      spawn,          SHCMD("transset-df -a --inc .1") },
-  { MODKEY|ShiftMask,             XK_f,      spawn,          SHCMD("transset-df -a .75") },
+  { MODKEY|ShiftMask,             XK_f,      spawn,          SHCMD("transset-df -a 1.0") },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
@@ -121,7 +122,8 @@ static Key keys[] = {
 	{ MODKEY|ControlMask,           XK_KP_9,   togglemaximize,         {.i = -1} },
 	{ MODKEY|ControlMask,           XK_KP_7,   togglemaximize,         {.i = +1} },
 	{ MODKEY|ControlMask,           XK_KP_5,   togglemaximize,         {.i =  0} },
-	{ MODKEY|ControlMask,           XK_Return, spawn,          {.v = browsercmd } },
+	{ MODKEY|ControlMask,           XK_Return, spawn,                  {.v = browsercmd } },
+	{ ControlMask|ShiftMask,        XK_Return, spawn,                  {.v = fmcmd } },
 };
 
 /* button definitions */
