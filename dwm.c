@@ -345,6 +345,11 @@ applyrules(Client *c) {
 	XGetClassHint(dpy, c->win, &ch);
 	class    = ch.res_class ? ch.res_class : broken;
 	instance = ch.res_name  ? ch.res_name  : broken;
+#ifdef _DEBUG_INSTANCE
+    FILE *fp = fopen("/tmp/dwm.instances.log", "a+");
+    fprintf(fp, "Class: %s, Instance: %s\n", class, instance);
+    fclose(fp);
+#endif
 
 	for(i = 0; i < LENGTH(rules); i++) {
 		r = &rules[i];

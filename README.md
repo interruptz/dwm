@@ -5,7 +5,7 @@ dwm official site: http://dwm.suckless.org/
 
 
 ### Required binaries
-- lxterminal
+- terminator
 - chromium
 - transset-df
 
